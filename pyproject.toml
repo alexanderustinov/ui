@@ -1,0 +1,12 @@
+[project]
+name = "ui2"
+version = "0.0.1"
+dependencies = [
+]
+
+[project.scripts]
+ui2 = "ui2.entry:help"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
