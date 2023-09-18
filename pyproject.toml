@@ -1,12 +1,20 @@
-[project]
-name = "ui2"
-version = "0.0.1"
-dependencies = [
-]
+[tool.poetry]
+name = "ui"
+version = "0.1.0"
+description = ""
+authors = ["Alexander B. Ustinov <ustinov@spbau.ru>"]
+readme = "README.md"
 
-[project.scripts]
-ui2 = "ui2.entry:help"
+[tool.poetry.dependencies]
+python = "^3.11"
+pyqt6 = "^6.5.2"
+
+[tool.poetry.scripts]
+ui = "ui.entry:help"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^7.4.2"
 
 [build-system]
-requires = ["setuptools"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
