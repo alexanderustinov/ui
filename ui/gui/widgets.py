@@ -4,11 +4,12 @@ from PyQt6.QtWidgets import (
     QLabel,
     QPushButton,
     QTextEdit,
-    QDateTimeEdit
+    QDateTimeEdit,
 )
 from PyQt6.QtCore import pyqtSignal, pyqtSlot
 
 from datetime import datetime
+
 
 class MomentWidget(QDateTimeEdit):
     @pyqtSlot(datetime)
@@ -16,14 +17,15 @@ class MomentWidget(QDateTimeEdit):
         self.setDateTime(now)
 
 
-
 class ExitButton(QPushButton):
     myclicked = pyqtSignal(int)
+
     def __init__(self, *args, **kwargs):
         QPushButton.__init__(self, *args, **kwargs)
-        self.myclicked = self.clicked
-        # self.myclicked.emit(1)
+        self.clicked.connect(self._activate_myclick)
 
+    def _activate_myclick(self):
+        self.myclicked.emit(1)
 
 
 class Window(QWidget):
@@ -42,7 +44,6 @@ class Window(QWidget):
         # self._label = label
         # self.__label = label
 
-
         edit = QTextEdit()
         container.addWidget(edit)
         edit.textChanged.connect(self.update_label)
@@ -56,10 +57,4 @@ class Window(QWidget):
         container.addWidget(moment)
         self.input_changed.connect(moment.update_time)
 
-
     from ui.gui.actions import update_label
-
-
-
-
-
