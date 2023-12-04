@@ -1,3 +1,3 @@
-from .entry import help
+from ui.entry import help
 
 help()
